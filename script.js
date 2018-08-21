@@ -4,42 +4,20 @@ document.addEventListener('DOMContentLoaded',function(){
   req.send();
   req.onload=function(){
     json=JSON.parse(req.responseText);
-    
+       
     //Data array that WILL store year and time (in SECONDS)
     var data = []
     //array of racetimes, split into arrays of min and sec
     var times = []
     json.forEach(function(val){
-      data.push([val.Year, val.Time, val.Name, val.Nationality, {"Doping": val.Doping}])
+      data.push([val.Year, val.Time, val.Name, val.Nationality, val.Doping])
       times.push(val.Time.split(":"))
     })
-    console.log (data)
-    
-    
-    //***what if I just push it onto the end of json, instead of making a whole new array?***
- 
- 
+  
   //turn racetimes into SECONDS, and add to data array
    for(var i=0; i<data.length; i++){
       data[i].push((times[i][0]*60 + Number(times[i][1])))
     }
-    
-
-    
-    //Original code that was refactored.
-    /*
-    //convert racetimes(min,sec) into seconds
-    var segundos = []
-    for(var i=0; i<times.length; i++){
-      segundos.push(times[i][0]*60 + Number(times[i][1]))
-    }
-    
-    //add seconds to the data array
-    for(var i=0; i<data.length; i++){
-      data[i].push(segundos[i])
-    }*/
-    console.log(data)
-    
     
     const w = 800;
     const h = 500;
@@ -71,16 +49,13 @@ document.addEventListener('DOMContentLoaded',function(){
        .attr("cx", (d, i) => xScale(d[0]))
        .attr("cy", (d, i) => yScale(d[5]))
        .attr("r", 5)
+       .attr("class", "circle")
        .style('fill', (d) => {
-          return (d.Doping ? "red" : "green")
+          return (d[4] ? "blue" : "orange")
         })
        .append("title")
        .text(d => d[2] + ": " + d[3] + " Year: " + d[0] + " Time: " + d[1] + d[4])
-       .attr("fill", "red");
     
-    
-
-       
     
     //move the X-axis
     svg.append("g")
