@@ -2,19 +2,51 @@ body{
   text-align: center;
 }
 
+ /*Grid container of graph and key*/
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: 35rem auto;
+ }
+
+ /*Grid container of key elements*/
+.mini-grid-container {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  text-align: left;
+ }
+
+/*Key*/
+#key{
+  margin-top: 4rem;
+}
+
+/*Set size and color of boxes in key*/
+#drugFree, #drugs{
+  width: 1rem;
+  height: 1rem;
+  background-color: orange
+}
+
+#drugs{
+  background-color: blue
+}
+
+/*Axes titles*/
 .label{
   fill: black;
   font-size: 1.5rem;
 }
 
-.circle{
-  fill: navy;
-}
-
-.circle:hover{
-  fill: blue;
-}
-
-.details{
-  color: pink;
+/*When user hovers over circles*/
+div.tooltip {	
+    position: absolute;			
+    text-align: left;			
+    width: 20rem;					
+    height: 4rem;					
+    padding: .5rem;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
 }
