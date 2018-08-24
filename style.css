@@ -16,14 +16,16 @@ body{
  }
 
 /*Key*/
-#key{
+#legend{
   margin-top: 4rem;
+  font-size: .75rem;
 }
 
 /*Set size and color of boxes in key*/
 #drugFree, #drugs{
   width: 1rem;
   height: 1rem;
+  margin-bottom: 2px;
   background-color: orange
 }
 
